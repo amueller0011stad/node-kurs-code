@@ -1,0 +1,11 @@
+<nav>
+    <ul class="navigation">
+        <li><a href="/home" class="nav-link {{#if homeActive}}active{{/if}}">Home</a></li>
+        {{#if isLoggedIn }}
+        <li><a href="/settings" class="nav-link {{#if settingsActive}}active{{/if}}">Settings</a></li>
+        <li><a href="/logout" class="nav-link">Logout</a></li>
+        {{else}}
+        <li><a href="/login" class="nav-link {{#if loginActive}}active{{/if}}">Login</a></li>
+        {{/if}}
+    </ul>
+</nav>

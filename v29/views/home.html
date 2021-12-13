@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+    <head>
+        <title>{{ title }}</title>
+        <link rel="stylesheet" href="/public/css/style.css">
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <nav>
+            <ul class="navigation">
+                <li><a href="/home" class="nav-link {{#if homeActive}}active{{/if}}">Home</a></li>
+                <li><a href="/settings" class="nav-link {{#if settingsActive}}active{{/if}}">Settings</a></li>
+            </ul>
+        </nav>
+        <main>
+            <h1>{{ heading }}</h1>
+
+            <ol>
+                {{#each articles}}
+                <li><a href="{{ url }}" target="_blank">{{ title }}</a></li>
+                {{/each}}
+            </ol>
+        </main>
+    </body>
+</html>
