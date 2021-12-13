@@ -21,11 +21,16 @@ const articles = [
 ];
 
 const registerPartials = () => {
-    const html = fs.readFileSync('views/partials/head.html', 'utf-8');
-    handlebars.registerPartial('head', html);
+    const files = fs.readdirSync('views/partials');
+    files.forEach(f => {
+        handlebars.registerPartial(f.replace(".html", ""), fs.readFileSync('views/partials/' + f, 'utf-8'));
+    });
 
-    const navHtml = fs.readFileSync('views/partials/navigation.html', 'utf-8');
-    handlebars.registerPartial('navigation', navHtml);
+//    const html = fs.readFileSync('views/partials/head.html', 'utf-8');
+//    handlebars.registerPartial('head', html);
+
+//    const navHtml = fs.readFileSync('views/partials/navigation.html', 'utf-8');
+//    handlebars.registerPartial('navigation', navHtml);
 };
 
 registerPartials();
@@ -77,6 +82,6 @@ const server = http.createServer((req, res) => {
     }
 });
 
-server.listen(process.env.PORT, () => {
-    console.log('Server now listening at port ' + process.env.PORT);
+server.listen(3000, () => {
+    console.log('Server now listening at port ' + 3000);
 });
