@@ -3,18 +3,15 @@ const
     express = require('express');
 require('dotenv').config();
 
-const server = express();
-
-server.set('viewDir', 'views');
-
-server.use(express.static('public'));
-
-server.engine('html', expressHandlebars({
-    extname: 'html',
-    partialsDir: 'views/partials'
-}));
-
-server.set('view engine', 'html');
+const server = express()
+    .set('viewDir', 'views')
+    .set('view engine', 'html')
+    .use(express.static('public'))
+    .engine('html', expressHandlebars({
+        extname: 'html',
+        partialsDir: 'views/partials'
+    }))
+    ;
 
 server.get('/home', (req, res) => {
     res.render('home', {
@@ -48,6 +45,6 @@ const articles = [
     }
 ];
 
-server.listen(process.env.PORT, () => {
+server.listen(3000, () => {
     console.log('Server now listening at port ' + process.env.PORT);
 });

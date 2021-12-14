@@ -1,5 +1,3 @@
-
-
 const auth = (req, res, next) => {
     if (req.session && req.session.isLoggedIn === true) {
         next();
@@ -9,4 +7,4 @@ const auth = (req, res, next) => {
     }
 };
 
-module.exports = auth;
+export default auth;
